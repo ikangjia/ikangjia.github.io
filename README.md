@@ -1,7 +1,6 @@
 ## About me
 
-Hi~ 
-I'm kangJia, a back-end developer.
+Hi~ Welcome to my homepage! I'm kangJia, a back-end developer.
 
 ## Links
 - [GitHub](https://github.com/ikangjia/)
