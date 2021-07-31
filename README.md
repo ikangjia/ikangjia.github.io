@@ -1,11 +1,13 @@
-# Homepage
+## About me
 
-欢迎来访问我的主页！
+Hi~ 
+I'm kangJia, a back-end developer.
 
-## 联系我
-- [Email](mailto:2466267753@qq.com)
-
-## 一些链接
+## Links
 - [GitHub](https://github.com/ikangjia/)
 - [Blog](https://ikangjia.cn/blog/)
+- [Docs](https://ikangjia.cn/ikangjia-books/)
 - [Resume](https://ikangjia.cn/resume/)
+
+## Contact
+- [Email](mailto:2466267753@qq.com)
