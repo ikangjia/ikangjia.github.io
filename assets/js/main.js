@@ -41,7 +41,7 @@ $(document).ready(function () {
 	/**
 	 * 获取Bing壁纸
 	 */
-	var url = "http://api.xtaoa.com/api/bing.php";
+	var url = "https://api.sunweihu.com/api/bing1/api.php";
 	$('#panel').css("background", "url('"+url+"') center center no-repeat #666");
 	$(".iUp").each(function (i, e) {
 		iUp.up(e);
