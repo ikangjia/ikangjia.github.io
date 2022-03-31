@@ -43,6 +43,7 @@ $(document).ready(function () {
 	 */
 	var url = "https://api.sunweihu.com/api/bing1/api.php";
 	$('#panel').css("background", "url('"+url+"') center center no-repeat #666");
+	$('#panel').css("background-size", "cover !important");
 	$(".iUp").each(function (i, e) {
 		iUp.up(e);
 	});
