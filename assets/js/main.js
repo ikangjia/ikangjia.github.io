@@ -42,8 +42,8 @@ $(document).ready(function () {
 	 * 获取Bing壁纸
 	 */
 	var url = "https://api.sunweihu.com/api/bing1/api.php";
-	$('#panel').css("background", "url('"+url+"') center center no-repeat #666");
-	$('#panel').css("background-size", "cover !important");
+	$('#panel').css("background", "url('"+url+"') center center cover no-repeat #666 !important");
+// 	$('#panel').css("background-size", "cover !important");
 	$(".iUp").each(function (i, e) {
 		iUp.up(e);
 	});
