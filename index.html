@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="icon" href="assets/img.png"/>
+  <meta charset="UTF-8">
+  <meta name="description" content="林深时觉寒的个人网站">
+  <meta name="keywords" content="林深时觉寒, 个人主页, Java, 前端, HTML, CSS, JavaScript">
+  <meta name="author" content="林深时觉寒">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>林深时觉寒</title>
+  <link rel="stylesheet" href="assets/index.css">
+</head>
+<body style="width: 100vw;height: 75vh;display: flex;justify-content: center;align-items: center">
+<main>
+  <p style="font-size: 2rem">你好，欢迎访问我的主页 <span id="toggle-theme">🏠</span>。</p>
+
+  <ul>
+    <li><a href="https://blog.ikangjia.cn" target="_blank">博客</a></li>
+    <li><a href="https://ikangjia.notion.site/9195ba6bf1f445c8b1abcdf47bf90601?pvs=4" target="_blank">技术笔记</a></li>
+    <li><a href="https://ikangjia.cn/resume" target="_blank">简历</a></li>
+    <li><a href="mailto:ikangjia.cn@outlook.com">发邮件给我</a></li>
+  </ul>
+</main>
+
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+
+    document.getElementById('toggle-theme').addEventListener('click', (e) => {
+        toggleTheme(e)
+    })
+
+    /**
+     * 切换主题色，html标签切换dark类
+     */
+    function toggleDark() {
+        document.documentElement.classList.toggle('dark')
+    }
+
+    /**
+     * 切换主题色，扩散渐变动画
+     * @param event 点击事件
+     */
+    function toggleTheme(event) {
+        // 如果当前页面是暗色，则切换为亮色；如果当前页面是亮色，则切换为暗色
+        const willDark = !document.documentElement.classList.contains('dark')
+        // 浏览器新特性不支持 或者 开启了动画减弱
+        if (!document.startViewTransition || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+            toggleDark()
+            return
+        }
+
+        // 开始加载 ViewTransition 扩散动画
+        const transition = document.startViewTransition(() => {
+            toggleDark()
+        })
+
+        // 传入点击事件，从点击处开始扩散。否则，从右上角开始扩散
+        const x = event?.clientX ?? window.innerWidth
+        const y = event?.clientY ?? 0
+
+        const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+        void transition.ready.then(() => {
+            const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
+            document.documentElement.animate(
+                {clipPath: willDark ? clipPath : [...clipPath].reverse()},
+                {
+                    duration: 500,
+                    easing: 'ease-in',
+                    pseudoElement: willDark ? '::view-transition-new(root)' : '::view-transition-old(root)'
+                }
+            )
+        })
+    }
+</script>
+</body>
+</html>

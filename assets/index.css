@@ -1,0 +1,41 @@
+:root {
+    --text-color: #000;
+    color: var(--text-color);
+}
+
+html.dark {
+    background-color: #000;
+    --text-color: #fff;
+}
+
+a {
+    color: var(--text-color);
+    letter-spacing: .1rem;
+}
+a:hover {
+    color: #deb2f8;
+}
+
+/* 主题切换扩散动画 */
+/** Animated Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+.dark::view-transition-old(root) {
+    z-index: 1;
+}
+
+.dark::view-transition-new(root) {
+    z-index: 999;
+}
+
+::view-transition-old(root) {
+    z-index: 999;
+}
+
+::view-transition-new(root) {
+    z-index: 1;
+}
